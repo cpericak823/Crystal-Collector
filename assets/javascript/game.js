@@ -29,10 +29,51 @@ $("#computerNumberDiv").html("Computer Number: " + selectedNumber);
 
 //generate a random number between 1-12 for each jewel
 //This will be variable called red-jewel/blue-jewel/green-jewel/yellow-jewel
-var redJewel;
-var blueJewel;
-var greenJewel;
-var yellowJewel;
+
+
+function chosenNumberRed() {
+    var redJewel = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+    var randomNumberRed = redJewel[Math.floor(Math.random() * redJewel.length)];
+
+    console.log(randomNumberRed);
+    return randomNumberRed;
+}
+var selectedNumberRed = chosenNumberRed();
+
+function chosenNumberBlue() {
+    var blueJewel = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+    var randomNumberBlue = blueJewel[Math.floor(Math.random() * blueJewel.length)];
+
+    console.log(randomNumberBlue);
+    return randomNumberBlue;
+}
+var selectedNumberBlue = chosenNumberBlue();
+
+
+function chosenNumberYellow() {
+    var yellowJewel = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+    var randomNumberYellow = yellowJewel[Math.floor(Math.random() * yellowJewel.length)];
+
+    console.log(randomNumberYellow);
+    return randomNumberYellow;
+}
+var selectedNumberYellow = chosenNumberYellow();
+
+
+function chosenNumberGreen() {
+    var greenJewel = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+    var randomNumberGreen = greenJewel[Math.floor(Math.random() * greenJewel.length)];
+
+    console.log(randomNumberGreen);
+    return randomNumberGreen;
+}
+var selectedNumberGreen = chosenNumberGreen();
+
+
 
 
 
