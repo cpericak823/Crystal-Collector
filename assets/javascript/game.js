@@ -126,24 +126,34 @@ $(document).ready(function() {
     function winner() {
         console.log('winner')
         if (userScore === selectedNumber) {
-            alert('Winner!')
+            alert('Winner!');
             return numberWins++
         }
         $('#wins').html('Wins: ' + numberWins);
     }
+
+
     //if userscore is greater than random-number, alert loser, and update dom
     function loser() {
         console.log('loser')
         if (userScore > selectedNumber) {
-            alert('Loser!')
+            alert('Loser!');
             return numberLosses++
         }
         $('#losses').html('Losses: ' + numberLosses);
     }
+
     var numberWins = winner();
     var numberLosses = loser();
 
+
     // reset selected numbers but not wins and losses
-    // initializeGame();
+
+    function finishedGame() {
+        console.log('finished game!')
+        initializeGame();
+
+    }
+    // finishedGame();
 
 });
