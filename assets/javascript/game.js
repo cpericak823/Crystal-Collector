@@ -122,37 +122,26 @@ $(document).ready(function() {
     });
 
 
-    //if userscore is equal to random-number, alert winner
+    //if userscore is equal to random-number, alert winner, and update dom
     function winner() {
         console.log('winner')
         if (userScore === selectedNumber) {
             alert('Winner!')
             return numberWins++
-
-                //if userscore is greater than random-number, alert loser
         }
+        $('#wins').html('Wins: ' + numberWins);
     }
-
+    //if userscore is greater than random-number, alert loser, and update dom
     function loser() {
         console.log('loser')
         if (userScore > selectedNumber) {
             alert('Loser!')
             return numberLosses++
         }
+        $('#losses').html('Losses: ' + numberLosses);
     }
     var numberWins = winner();
     var numberLosses = loser();
-
-
-    //use a for loop to run fucntion winOrLose 25 times and increment by one
-    // for (var i = 0; i < 100; i++) {
-
-    //     // add one to variable wins and display in stats on DOM
-    //     $('#wins').html('Wins: ' + numberWins);
-    //     // add one to variable losses and display in stats on DOM
-    //     $('#losses').html('Losses: ' + numberLosses);
-    // }
-
 
     // reset selected numbers but not wins and losses
     // initializeGame();
