@@ -1,22 +1,22 @@
 //Start the game
 $(document).ready(function() {
-    //Set score to zero
-    //this will be variable called userscore and will be displayed in the ID score
-    //use jquery to get element by ID and replace ID
-    // var userscore, number, redJewel, blueJewel, yellowJewel, greenJewel;
+    // make our variables global to the runtime of our application
+    var userscore, number, redJewel, blueJewel, yellowJewel, greenJewel, result;
 
-    // function initializeGame() {
-    //     userscore = "";
-    //     number = "";
-    //     redJewel = "";
-    //     blueJewel = "";
-    //     yellowJewel = "";
-    //     greenJewel = "";
+    // use a function to initialize the game. this way when the user hits clear
+    // we can guarantee that we're in the exact same state as we were when the app started.
+    function initializeGame() {
 
-    //     $('')
+        userScore = "";
+        number = "";
+        redJewel = "";
+        blueJewel = "";
+        yellowJewel = "";
+        greenJewel = "";
+        clickedJewel;
 
-    // }
-
+        $('#userScore, #computerNumberDiv, #redJewel, #blueJewel, #yellowJewel, #greenJewel').empty();
+    }
 
     //Generate a number between 19 - 120
     //This will be a variable called number
@@ -84,14 +84,19 @@ $(document).ready(function() {
     var selectedNumberGreen = chosenNumberGreen();
 
 
-    //On click of each button, add this number to the user score
-    //use jquery .onclick events to trigger this
+    //Capture the click of each jewel button,
+    $('.btn-default').on('click', function(clickedJewel) {
+        //if redJewel is clicked, as selected red jewel number to user score
+        if (clickedJewel) {
+            selectedNumberRed += this.value;
+            $('#userScore').html("Your total score is: " + selectedNumberRed);
+        }
+    })
+
+});
 
 
 
-
-    //if userscore is equal to random-number, alert winner, add one to variable wins and display in stats, and reset score and random number
-    //if userscore is greater than random-number, alert you lose, add one to variable losses and display in stats, and reset score and random number
-    //use if statements to set conditions of userscore = or > than random-number
-
-})
+//if userscore is equal to random-number, alert winner, add one to variable wins and display in stats, and reset score and random number
+//if userscore is greater than random-number, alert you lose, add one to variable losses and display in stats, and reset score and random number
+//use if statements to set conditions of userscore = or > than random-number
