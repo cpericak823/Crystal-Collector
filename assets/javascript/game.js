@@ -124,10 +124,12 @@ $(document).ready(function() {
 
     //if userscore is equal to random-number, alert winner, and update dom
     function winner() {
-        console.log('winner')
+        console.log(userScore)
+        console.log(selectedNumber)
         if (userScore === selectedNumber) {
+            console.log('winner')
             alert('Winner!');
-            return numberWins++
+            numberWins++
         }
         $('#wins').html('Wins: ' + numberWins);
     }
@@ -137,14 +139,15 @@ $(document).ready(function() {
     function loser() {
         console.log('loser')
         if (userScore > selectedNumber) {
+            console.log('loser')
             alert('Loser!');
-            return numberLosses++
+            numberLosses++
         }
         $('#losses').html('Losses: ' + numberLosses);
     }
 
-    var numberWins = winner();
-    var numberLosses = loser();
+    winner();
+    loser();
 
 
     // reset selected numbers but not wins and losses
