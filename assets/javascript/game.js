@@ -1,24 +1,25 @@
 //Start the game
 $(document).ready(function() {
     // make our variables global to the runtime of our application
-    var userscore, number, redJewel, blueJewel, yellowJewel, greenJewel;
-    // var userscore = function(clickedMultiJewels) {};
+    var number, redJewel, blueJewel, yellowJewel, greenJewel;
+    var userScore = 0;
+    var numberWins = 0;
+    var numberLosses = 0;
+
 
     // use a function to initialize the game. this way when the user hits clear
     // we can guarantee that we're in the exact same state as we were when the app started.
     function initializeGame() {
 
-        userScore = "";
         number = "";
         redJewel = "";
         blueJewel = "";
         yellowJewel = "";
         greenJewel = "";
-        clickedJewel;
 
-
-        $('#userScore, #computerNumberDiv, #redJewel, #blueJewel, #yellowJewel, #greenJewel').empty();
+        $('#userScoreDiv, #computerNumberDiv, #redJewel, #blueJewel, #yellowJewel, #greenJewel').empty();
     }
+
 
     //Generate a number between 19 - 120
     //This will be a variable called number
@@ -35,6 +36,7 @@ $(document).ready(function() {
         console.log(randomNumber);
         return randomNumber;
     }
+
     var selectedNumber = chosenNumber();
 
     $("#computerNumberDiv").html("Computer Number: " + selectedNumber);
@@ -63,6 +65,7 @@ $(document).ready(function() {
     }
     var selectedNumberBlue = chosenNumberBlue();
 
+
     //generate number between 1 and 12 for yellow jewel
     function chosenNumberYellow() {
         var yellowJewel = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -73,6 +76,7 @@ $(document).ready(function() {
         return randomNumberYellow;
     }
     var selectedNumberYellow = chosenNumberYellow();
+
 
     //generate number between 1 and 12 for green jewel
     function chosenNumberGreen() {
@@ -88,55 +92,64 @@ $(document).ready(function() {
 
     //Capture the click of each jewel button,
     //if redJewel is clicked, as selectedRedJewel number to user score
-    $('.btn-default').on('click', function(clickedJewel) {
-        if (clickedJewel) {
-            selectedNumberRed += this.value;
-            $('#userScoreDiv').html("Your total score is: " + selectedNumberRed);
-        }
-    })
+    $('.redJewel').on('click', function(event) {
+        userScore += selectedNumberRed;
+        $('#userScoreDiv').html("Your total score is: " + userScore);
+    });
+
 
     //Capture the click of each jewel button,
     //if blueJewel is clicked, display selectedBlueJewel number to user score
-    $('.btn-default').on('click', function(clickedJewel) {
+    $('.blueJewel').on('click', function(event) {
+        userScore += selectedNumberBlue;
+        $('#userScoreDiv').html("Your total score is: " + userScore);
+    });
 
-        if (clickedJewel) {
-            selectedNumberBlue += this.value;
-            $('#userScoreDiv').html("Your total score is: " + selectedNumberBlue);
-        }
-    })
 
     //Capture the click of each jewel button,
     //if yellowJewel is clicked, display selectedYellowJewel number to user score
-    $('.btn-default').on('click', function(clickedJewel) {
+    $('.yellowJewel').on('click', function(event) {
+        userScore += selectedNumberYellow;
+        $('#userScoreDiv').html("Your total score is: " + userScore);
+    });
 
-        if (clickedJewel) {
-            selectedNumberYellow += this.value;
-            $('#userScoreDiv').html("Your total score is: " + selectedNumberYellow);
-        }
-    })
 
     //Capture the click of each jewel button,
     //if greenJewel is clicked, display selectedGreenJewel number to user score
-    $('.btn-default').on('click', function(clickedJewel) {
+    $('.greenJewel').on('click', function(event) {
+        userScore += selectedNumberGreen;
+        $('#userScoreDiv').html("Your total score is: " + userScore);
+    });
 
-        if (clickedJewel) {
-            selectedNumberGreen += this.value;
-            $('#userScoreDiv').html("Your total score is: " + selectedNumberGreen);
+
+    //if userscore is equal to random-number, alert winner
+    function winOrLose() {
+        if (userScore === selectedNumber) {
+            console.log('winner')
+            alert('Winner!')
+            return numberWins++
+
+                //if userscore is greater than random-number, alert loser
         }
-    })
+        if (userScore > selectedNumber) {
+            console.log('loser')
+            alert('Loser!')
+            return numberLosses++
+        }
+    }
 
 
-    //If more than one jewel is clicked, add selectedNumberColors together
-    // $('.btn-default').on('click', function(clickedMultiJewels) {
+    //use a for loop to run fucntion winOrLose 25 times and increment by one
+    for (var i = 0; i < 25; i++) {
+        winOrLose();
+        // add one to variable wins and display in stats on DOM
+        $('#wins').html('Wins: ' + numberWins);
+        // add one to variable losses and display in stats on DOM
+        $('#losses').html('Losses: ' + numberLosses);
+    }
 
-    //     if (clickedMultiJewels) {
-    //         clickedJewelGreen() + clickedJewelYellow() + clickedJewelBlue() + clickedJewelRed() = this.value;
-    //         $('#userScoreDiv').html("Your total score is: " + userscore);
-    //     }
-    // })
 
+    // reset selected numbers but not wins and losses
+    // initializeGame();
 
-    //if userscore is equal to random-number, alert winner, add one to variable wins and display in stats, and reset score and random number
-    //if userscore is greater than random-number, alert you lose, add one to variable losses and display in stats, and reset score and random number
-    //use if statements to set conditions of userscore = or > than random-number
 });
