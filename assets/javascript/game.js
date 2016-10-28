@@ -123,30 +123,35 @@ $(document).ready(function() {
 
 
     //if userscore is equal to random-number, alert winner
-    function winOrLose() {
+    function winner() {
+        console.log('winner')
         if (userScore === selectedNumber) {
-            console.log('winner')
             alert('Winner!')
             return numberWins++
 
                 //if userscore is greater than random-number, alert loser
         }
+    }
+
+    function loser() {
+        console.log('loser')
         if (userScore > selectedNumber) {
-            console.log('loser')
             alert('Loser!')
             return numberLosses++
         }
     }
+    var numberWins = winner();
+    var numberLosses = loser();
 
 
     //use a for loop to run fucntion winOrLose 25 times and increment by one
-    for (var i = 0; i < 25; i++) {
-        winOrLose();
-        // add one to variable wins and display in stats on DOM
-        $('#wins').html('Wins: ' + numberWins);
-        // add one to variable losses and display in stats on DOM
-        $('#losses').html('Losses: ' + numberLosses);
-    }
+    // for (var i = 0; i < 100; i++) {
+
+    //     // add one to variable wins and display in stats on DOM
+    //     $('#wins').html('Wins: ' + numberWins);
+    //     // add one to variable losses and display in stats on DOM
+    //     $('#losses').html('Losses: ' + numberLosses);
+    // }
 
 
     // reset selected numbers but not wins and losses
