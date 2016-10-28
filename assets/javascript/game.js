@@ -95,6 +95,8 @@ $(document).ready(function() {
     $('.redJewel').on('click', function(event) {
         userScore += selectedNumberRed;
         $('#userScoreDiv').html("Your total score is: " + userScore);
+        winner();
+        loser();
     });
 
 
@@ -103,6 +105,8 @@ $(document).ready(function() {
     $('.blueJewel').on('click', function(event) {
         userScore += selectedNumberBlue;
         $('#userScoreDiv').html("Your total score is: " + userScore);
+        winner();
+        loser();
     });
 
 
@@ -111,6 +115,8 @@ $(document).ready(function() {
     $('.yellowJewel').on('click', function(event) {
         userScore += selectedNumberYellow;
         $('#userScoreDiv').html("Your total score is: " + userScore);
+        winner();
+        loser();
     });
 
 
@@ -119,6 +125,9 @@ $(document).ready(function() {
     $('.greenJewel').on('click', function(event) {
         userScore += selectedNumberGreen;
         $('#userScoreDiv').html("Your total score is: " + userScore);
+        winner();
+        loser();
+
     });
 
 
@@ -132,12 +141,15 @@ $(document).ready(function() {
             numberWins++
         }
         $('#wins').html('Wins: ' + numberWins);
+
     }
 
 
     //if userscore is greater than random-number, alert loser, and update dom
     function loser() {
         console.log('loser')
+        console.log(userScore)
+        console.log(selectedNumber)
         if (userScore > selectedNumber) {
             console.log('loser')
             alert('Loser!');
@@ -146,17 +158,5 @@ $(document).ready(function() {
         $('#losses').html('Losses: ' + numberLosses);
     }
 
-    winner();
-    loser();
-
-
-    // reset selected numbers but not wins and losses
-
-    function finishedGame() {
-        console.log('finished game!')
-        initializeGame();
-
-    }
-    // finishedGame();
 
 });
