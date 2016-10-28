@@ -7,6 +7,7 @@ $(document).ready(function() {
     var numberLosses = 0;
 
 
+
     // use a function to initialize the game. this way when the user hits clear
     // we can guarantee that we're in the exact same state as we were when the app started.
     function initializeGame() {
@@ -17,8 +18,11 @@ $(document).ready(function() {
         yellowJewel = "";
         greenJewel = "";
 
-        $('#userScoreDiv, #computerNumberDiv, #redJewel, #blueJewel, #yellowJewel, #greenJewel').empty();
+        $('#redJewel, #blueJewel, #yellowJewel, #greenJewel').empty();
+        $('#userScoreDiv').html("Your total score is: ");
+        $('#computerNumberDiv').html("Computer Number: " + chosenNumber());
     }
+
 
 
     //Generate a number between 19 - 120
@@ -139,6 +143,8 @@ $(document).ready(function() {
             console.log('winner')
             alert('Winner!');
             numberWins++
+            initializeGame();
+
         }
         $('#wins').html('Wins: ' + numberWins);
 
@@ -147,13 +153,14 @@ $(document).ready(function() {
 
     //if userscore is greater than random-number, alert loser, and update dom
     function loser() {
-        console.log('loser')
         console.log(userScore)
         console.log(selectedNumber)
         if (userScore > selectedNumber) {
             console.log('loser')
             alert('Loser!');
             numberLosses++
+            initializeGame();
+
         }
         $('#losses').html('Losses: ' + numberLosses);
     }
