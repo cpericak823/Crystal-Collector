@@ -17,9 +17,13 @@ $(document).ready(function() {
         blueJewel = "";
         yellowJewel = "";
         greenJewel = "";
+        userScore = 0;
+
+        console.log('initialize function called')
+
 
         $('#redJewel, #blueJewel, #yellowJewel, #greenJewel').empty();
-        $('#userScoreDiv').html("Your total score is: ");
+        $('#userScoreDiv').html("Your total score is: " + userScore);
         $('#computerNumberDiv').html("Computer Number: " + chosenNumber());
     }
 
@@ -142,7 +146,7 @@ $(document).ready(function() {
         if (userScore === selectedNumber) {
             console.log('winner')
             alert('Winner!');
-            numberWins++
+            numberWins++;
             initializeGame();
 
         }
@@ -158,7 +162,7 @@ $(document).ready(function() {
         if (userScore > selectedNumber) {
             console.log('loser')
             alert('Loser!');
-            numberLosses++
+            numberLosses++;
             initializeGame();
 
         }
